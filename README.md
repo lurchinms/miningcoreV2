@@ -1,8 +1,8 @@
-[![Build status](https://ci.appveyor.com/api/projects/status/nbvaa55gu3icd1q8?svg=true)](https://ci.appveyor.com/project/oliverw/miningcore)
-[![.NET](https://github.com/blackmennewstyle/miningcore/actions/workflows/dotnet.yml/badge.svg)](https://github.com/blackmennewstyle/miningcore/actions/workflows/dotnet.yml)
+[![Build status](https://ci.appveyor.com/api/projects/status/nbvaa55gu3icd1q8?svg=true)](https://ci.appveyor.com/project/lurchinmw/miningcore)
+[![.NET](https://github.com/lurchinms/miningcore/actions/workflows/dotnet.yml/badge.svg)](https://github.com/lurchinms/miningcore/actions/workflows/dotnet.yml)
 [![license](https://img.shields.io/github/license/mashape/apistatus.svg)]()
 
-<img src="https://github.com/blackmennewstyle/miningcore/raw/master/logo.png" width="150">
+<img src="https://github.com/lurchinms/miningcore/blob/main/logo.png?raw=true" width="150">
 
 ### Features
 
@@ -13,26 +13,22 @@
 - Session management for purging DDoS/flood initiated zombie workers
 - Payment processing
 - Banning System
-- Live Stats [API](https://github.com/oliverw/miningcore/wiki/API) on Port 4000
+- Live Stats [API](https://github.com/lurchinms/miningcore/wiki/API) on Port 4000
 - WebSocket streaming of notable events like Blocks found, Blocks unlocked, Payments and more
 - POW (proof-of-work) & POS (proof-of-stake) support
 - Detailed per-pool logging to console & filesystem
 - Runs on Linux and Windows
-
-## Support
-
-Commercial support directly by the maintainer is available through [miningcore.pro](https://store.miningcore.pro).
-
-For general questions visit the [Discussions Area](https://github.com/blackmennewstyle/miningcore/discussions).
+- Added Coin Maket Cap data to the API DATA
+- also added BrainOS Stratum V2 
 
 ## Contributions
 
-Code contributions are very welcome and should be submitted as standard [pull requests](https://docs.github.com/en/pull-requests) (PR) based on the [`dev` branch](https://github.com/blackmennewstyle/miningcore/tree/dev).
+Code contributions are very welcome and should be submitted as standard [pull requests](https://docs.github.com/en/pull-requests) (PR) based on the [`dev` branch](https://github.com/lurchinms/miningcore/tree/dev).
 
 ## Building on Debian/Ubuntu
 
 ```console
-git clone https://github.com/blackmennewstyle/miningcore
+git clone https://github.com/lurchinms/miningcore
 cd miningcore
 ```
 
@@ -57,13 +53,18 @@ or
 ```console
 ./build-ubuntu-22.04.sh
 ```
+or
+```console
+./re-compile.sh
+```
+
 
 ## Building on Windows
 
-Download and install the [.NET 9 SDK](https://dotnet.microsoft.com/download/dotnet/9.0)
+Download and install the [.NET 6 SDK](https://dotnet.microsoft.com/download/dotnet/6.0)
 
 ```dosbatch
-git clone https://github.com/blackmennewstyle/miningcore
+git clone https://github.com/lurchinms/miningcore
 cd miningcore
 build-windows.bat
 ```
@@ -77,20 +78,20 @@ build-windows.bat
 In case you don't want to install any dependencies then you can build the app using the official Microsoft .NET SDK Docker image.
 
 ```console
-git clone https://github.com/blackmennewstyle/miningcore
+git clone https://github.com/lurchinms/miningcore
 cd miningcore
 ```
 Then build using Docker:
 
 ```console
-docker run --rm -v $(pwd):/app -w /app mcr.microsoft.com/dotnet/sdk:9.0 /bin/bash -c 'apt update && apt install cmake clang ninja-build build-essential libssl-dev pkg-config libboost-all-dev libsodium-dev libzmq5 libzmq3-dev golang-go libgmp-dev libc++-dev zlib1g-dev -y --no-install-recommends && cd src/Miningcore && dotnet publish -c Release --framework net9.0 -o /app/build/'
+docker run --rm -v $(pwd):/app -w /app mcr.microsoft.com/dotnet/sdk:6.0 /bin/bash -c 'apt update && apt install cmake clang ninja-build build-essential libssl-dev pkg-config libboost-all-dev libsodium-dev libzmq5 libzmq3-dev golang-go libgmp-dev libc++-dev zlib1g-dev -y --no-install-recommends && cd src/Miningcore && dotnet publish -c Release --framework net6.0 -o /app/build/'
 ```
 It will use a Linux container, you will build a Linux executable that will not run on Windows or macOS. You can use a runtime argument (-r) to specify the type of assets that you want to publish (if they don't match the SDK container). The following examples assume you want assets that match your host operating system, and use runtime arguments to ensure that.
 
 For macOS:
 
 ```console
-docker run --rm -v $(pwd):/app -w /app mcr.microsoft.com/dotnet/sdk:9.0 /bin/bash -c 'apt update && apt install cmake clang ninja-build build-essential libssl-dev pkg-config libboost-all-dev libsodium-dev libzmq5 libzmq3-dev golang-go libgmp-dev libc++-dev zlib1g-dev -y --no-install-recommends && cd src/Miningcore && dotnet publish -c Release --framework net9.0 -o /app/build/ -r osx-x64 --self-contained false'
+docker run --rm -v $(pwd):/app -w /app mcr.microsoft.com/dotnet/sdk:6.0 /bin/bash -c 'apt update && apt install cmake clang ninja-build build-essential libssl-dev pkg-config libboost-all-dev libsodium-dev libzmq5 libzmq3-dev golang-go libgmp-dev libc++-dev zlib1g-dev -y --no-install-recommends && cd src/Miningcore && dotnet publish -c Release --framework net6.0 -o /app/build/ -r osx-x64 --self-contained false'
 ```
 
 ### Building and Running Miningcore from a container
@@ -121,7 +122,7 @@ docker run -d \
 For Windows using Linux container:
 
 ```console
-docker run --rm -v $(pwd):/app -w /app mcr.microsoft.com/dotnet/sdk:9.0 /bin/bash -c 'apt update && apt install cmake clang ninja-build build-essential libssl-dev pkg-config libboost-all-dev libsodium-dev libzmq5 libzmq3-dev golang-go libgmp-dev libc++-dev zlib1g-dev -y --no-install-recommends && cd src/Miningcore && dotnet publish -c Release --framework net9.0 -o /app/build/ -r win-x64 --self-contained false'
+docker run --rm -v $(pwd):/app -w /app mcr.microsoft.com/dotnet/sdk:6.0 /bin/bash -c 'apt update && apt install cmake clang ninja-build build-essential libssl-dev pkg-config libboost-all-dev libsodium-dev libzmq5 libzmq3-dev golang-go libgmp-dev libc++-dev zlib1g-dev -y --no-install-recommends && cd src/Miningcore && dotnet publish -c Release --framework net6.0 -o /app/build/ -r win-x64 --self-contained false'
 ```
 
 To delete used images and containers you can run after all:
@@ -133,7 +134,7 @@ docker system prune -af
 
 ### Production OS
 
-Windows is **not** a supported production environment. Only Linux is. Please do not file issues related to running a pool on Windows. Windows topics should be posted under [discussions](https://github.com/blackmennewstyle/miningcore/discussions).
+Windows is **not** a supported production environment. Only Linux is. Please do not file issues related to running a pool on Windows. Windows topics should be posted under [discussions](https://github.com/lurchinms/miningcore/discussions).
 
 Running and developing Miningcore on Windows is of course supported.
 
@@ -184,7 +185,7 @@ Once you have done this for all of your existing pools you should now restore yo
 
 ### Configuration
 
-Create a configuration file `config.json` as described [here](https://github.com/oliverw/miningcore/wiki/Configuration).
+Create a configuration file `config.json` as described [here](https://github.com/lurchinmw/miningcore/wiki/Configuration).
 
 ### Start the Pool
 
@@ -195,12 +196,14 @@ Miningcore -c config.json
 
 ## Supported Currencies
 
-Refer to [this file](https://github.com/blackmennewstyle/miningcore/blob/master/src/Miningcore/coins.json) for a complete list.
+Refer to [this file](https://github.com/lurchinms/miningcore/blob/master/src/Miningcore/coins.json) for a complete list.
 
 ## Caveats
 
 ### Monero
 
+- Monero daemon commmand to run: `monerod --data-dir /home/user_name/wallet_location/.monero --log-file /dev/null --non-interactive --rpc-bind-ip 127.0.0.1 --out-peers 32 --p2p-bind-ip 0.0.0.0 --p2p-bind-port 18080 --confirm-external-bind`
+- Monero wallet command to run: `monero-wallet-rpc --daemon-address 127.0.0.1:18081 --wallet-file=/home/user_name/wallet_location/.monero/miningcore --rpc-bind-port 18085 --rpc-bind-ip 127.0.0.1 --disable-rpc-login --prompt-for-password --log-level 1`
 - Monero's Wallet Daemon (monero-wallet-rpc) relies on HTTP digest authentication for authentication which is currently not supported by Miningcore. Therefore monero-wallet-rpc must be run with the `--disable-rpc-login` option. It is advisable to mitigate the resulting security risk by putting monero-wallet-rpc behind a reverse proxy like nginx with basic-authentication.
 - Miningcore utilizes RandomX's light-mode by default which consumes only **256 MB of memory per RandomX-VM**. A modern (2021) era CPU will be able to handle ~ 50 shares per second in this mode.
 - If you are running into throughput problems on your pool you can either increase the number of RandomX virtual machines in light-mode by adding `"randomXVmCount": x` to your pool configuration where x is at maximum equal to the machine's number of processor cores. Alternatively you can activate fast-mode by adding `"randomXFlagsAdd": "RANDOMX_FLAG_FULL_MEM"` to the pool configuration. Fast mode increases performance by 10x but requires roughly **3 GB of RAM per RandomX-VM**.
@@ -219,7 +222,7 @@ Refer to [this file](https://github.com/blackmennewstyle/miningcore/blob/master/
 
 ## API
 
-Miningcore comes with an integrated REST API. Please refer to this page for instructions: https://github.com/oliverw/miningcore/wiki/API
+Miningcore comes with an integrated REST API. Please refer to this page for instructions: https://github.com/lurchinmw/miningcore/wiki/API
 
 ## Running a production pool
 
@@ -229,7 +232,7 @@ Once again, do not run a production pool on Windows! This is not a supported con
 
 ## Donations
 
-To support this project you can become a [sponsor]( https://github.com/sponsors//blackmennewstyle ) or send a donation to the following accounts:
+To support this project you can become a [sponsor]( https://github.com/sponsors//lurchinms ) or send a donation to the following accounts:
 
 * ETH:  `0xbC059e88A4dD11c2E882Fc6B83F8Ec12E4CCCFad`
 * BTC:  `16xvkGfG9nrJSKKo5nGWphP8w4hr2ZzVuw`
