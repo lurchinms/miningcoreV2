@@ -60,7 +60,7 @@ or
 
 ## Building on Windows
 
-Download and install the [.NET 6 SDK](https://dotnet.microsoft.com/download/dotnet/6.0)
+Download and install the [.NET 9 SDK](https://dotnet.microsoft.com/download/dotnet/9.0)
 
 ```dosbatch
 git clone https://github.com/lurchinms/miningcore
