@@ -1,3 +1,3 @@
 @echo off
 cd src
-dotnet build -o ../../build
+dotnet build -o ../build
