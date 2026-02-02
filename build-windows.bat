@@ -1,3 +1,3 @@
 @echo off
-cd src\Miningcore
+cd src
 dotnet build -o ../../build
