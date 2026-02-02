@@ -9,4 +9,4 @@ sudo apt-get update; \
 sudo apt-get -y install dotnet-sdk-9.0 git cmake clang ninja-build build-essential libssl-dev pkg-config libboost-all-dev libsodium-dev libzmq5 libgmp-dev libc++-dev zlib1g-dev
 
 (cd src \
-dotnet build)
+dotnet build -o ../../build)
