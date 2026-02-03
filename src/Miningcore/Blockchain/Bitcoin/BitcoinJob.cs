@@ -693,7 +693,7 @@ public class BitcoinJob
         JobId = jobId;
 
         var coinbaseString = !string.IsNullOrEmpty(cc.PaymentProcessing?.CoinbaseString) ?
-            cc.PaymentProcessing?.CoinbaseString.Trim() : "Miningcore";
+            cc.PaymentProcessing?.CoinbaseString.Trim() : "KriptoKyng Pool";
 
         scriptSigFinalBytes = new Script(Op.GetPushOp(Encoding.UTF8.GetBytes(coinbaseString))).ToBytes();
 
