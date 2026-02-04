@@ -34,6 +34,9 @@ public class ApiCoinConfig
     public string Telegram { get; set; }
 
     [System.Text.Json.Serialization.JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+    public string Github { get; set; }
+
+    [System.Text.Json.Serialization.JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
     public string CanonicalName { get; set; }
 
     [System.Text.Json.Serialization.JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
