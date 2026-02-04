@@ -2430,7 +2430,7 @@
         }
       ]
     },
-    "explorerBlockLink": "https://explorer.hypercoin.network/block/$height$",
+    "explorerBlockLink": "https://explorer.hypercoin.network/block-height/$height$",
     "explorerTxLink": "https://explorer.hypercoin.network/tx/{0}",
     "explorerAccountLink": "https://explorer.hypercoin.network/address/{0}"
   },
