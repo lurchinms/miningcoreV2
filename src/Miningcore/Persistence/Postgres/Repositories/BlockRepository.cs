@@ -133,9 +133,7 @@ public class BlockRepository : IBlockRepository
             .FirstOrDefault();
     }
     
-
     public async Task<uint> GetBlockBeforeCountAsync(IDbConnection con, string poolId, BlockStatus[] status, DateTime before)
-
     {
         const string query = @"SELECT * FROM blocks WHERE poolid = @poolid AND status = ANY(@status) AND created < @before";
         
@@ -195,6 +193,20 @@ public class BlockRepository : IBlockRepository
         return con.ExecuteScalarAsync<DateTime?>(new CommandDefinition(query, new { poolId, address }, cancellationToken: ct));
     }
 
+    public async Task<Block> GetBlockByPoolHeightAndTypeAsync(IDbConnection con, string poolId, long height, string type)
+    {
+        const string query = @"SELECT * FROM blocks WHERE poolid = @poolId AND blockheight = @height AND type = @type";
+
+        return (await con.QueryAsync<Entities.Block>(query, new
+        { 
+            poolId,
+            height,
+            type
+        }))
+            .Select(mapper.Map<Block>)
+            .FirstOrDefault();
+    }
+    
     public async Task<uint> GetPoolDuplicateBlockCountByPoolHeightNoTypeAndStatusAsync(IDbConnection con, string poolId, long height, BlockStatus[] status)
     {
         const string query = @"SELECT COUNT(id) FROM blocks WHERE poolid = @poolId AND blockheight = @height AND status = ANY(@status)";
