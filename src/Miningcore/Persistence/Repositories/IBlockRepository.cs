@@ -14,6 +14,7 @@ public interface IBlockRepository
     Task<Block[]> PageMinerBlocksAsync(IDbConnection con, string poolId, string address, BlockStatus[] status, int page, int pageSize, CancellationToken ct);
     Task<Block[]> GetPendingBlocksForPoolAsync(IDbConnection con, string poolId);
     Task<Block> GetBlockBeforeAsync(IDbConnection con, string poolId, BlockStatus[] status, DateTime before);
+    Task<Block> GetMinerBlockBeforeAsync(IDbConnection con, string poolId, string miner, BlockStatus[] status, DateTime before);
     Task<Block> GetMinerBlockBeforeAsync(IDbConnection con, string poolId, string miner, BlockStatus[] status, DateTime before, CancellationToken ct);
     Task<uint> GetBlockBeforeCountAsync(IDbConnection con, string poolId, BlockStatus[] status, DateTime before);
     Task<uint> GetPoolBlockCountAsync(IDbConnection con, string poolId, CancellationToken ct);
