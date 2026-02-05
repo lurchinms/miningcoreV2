@@ -2,6 +2,7 @@ using System.Collections.Concurrent;
 using System.Data;
 using System.Globalization;
 using System.Net;
+using Dapper;
 using Autofac;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ActionConstraints;
@@ -54,46 +55,16 @@ public class PoolApiController : ApiControllerBase
         [FromServices] CoinMarketCap.CoinMarketCapService service,
         [FromQuery] uint topMinersRange = 24)
     {
+        var enabledPools = clusterConfig.Pools.Where(x => x.Enabled).ToArray();
+        
+        // Process all pools in parallel - each pool uses a batch query reducing DB round-trips
+        var poolTasks = enabledPools.Select(config => GetPoolDataBatchAsync(config, topMinersRange, ct));
+
         var response = new GetPoolsResponse
         {
-            Pools = await Task.WhenAll(clusterConfig.Pools.Where(x => x.Enabled).Select(async config =>
-            {
-                // load stats
-                var stats = await cf.Run(con => statsRepo.GetLastPoolStatsAsync(con, config.Id, ct));
-
-                // get pool
-                pools.TryGetValue(config.Id, out var pool);
-
-                // map
-                var result = config.ToPoolInfo(mapper, stats, pool);
-
-                // enrich
-                result.TotalPaid = await cf.Run(con => statsRepo.GetTotalPoolPaymentsAsync(con, config.Id, ct));
-                result.TotalBlocks = await cf.Run(con => blocksRepo.GetPoolBlockCountAsync(con, config.Id, ct));
-                result.TotalConfirmedBlocks = await cf.Run(con => blocksRepo.GetTotalConfirmedBlocksAsync(con, config.Id, ct));
-                result.TotalPendingBlocks = await cf.Run(con => blocksRepo.GetTotalPendingBlocksAsync(con, config.Id, ct));
-                // get reward of the last confirmed block and set BlockReward
-                result.BlockReward = await cf.Run(con => blocksRepo.GetLastConfirmedBlockRewardAsync(con, config.Id, ct));
-                var lastBlockTime = await cf.Run(con => blocksRepo.GetLastPoolBlockTimeAsync(con, config.Id, ct));
-                result.LastPoolBlockTime = lastBlockTime;
-
-                if(lastBlockTime.HasValue)
-                {
-                    var startTime = lastBlockTime.Value;
-                    var poolEffort = await cf.Run(con => shareRepo.GetEffortBetweenCreatedAsync(con, config.Id, pool.ShareMultiplier, startTime, clock.Now, ct));
-                    if(poolEffort.HasValue)
-                        result.PoolEffort = poolEffort.Value;
-                }
-
-                var from = clock.Now.AddHours(-topMinersRange);
-
-                var minersByHashrate = await cf.Run(con => statsRepo.PagePoolMinersByHashrateAsync(con, config.Id, from, 0, 15, ct));
-
-                result.TopMiners = minersByHashrate.Select(mapper.Map<MinerPerformanceStats>).ToArray();
-
-                return result;
-            }).ToArray())
+            Pools = await Task.WhenAll(poolTasks)
         };
+
         if(clusterConfig.CoinMarketCapApi.Enabled)
         {
             var symbols = string.Join(",", response?.Pools?.Select(Q => Q.Coin.Symbol));
@@ -122,6 +93,71 @@ public class PoolApiController : ApiControllerBase
             }
         }
         return Ok(response);
+    }
+
+    /// <summary>
+    /// Fetches all pool data using batch SQL queries to minimize database round-trips.
+    /// Combines 6 block/payment queries into 1, reducing total round-trips from 9 to 4 per pool.
+    /// </summary>
+    private async Task<PoolInfo> GetPoolDataBatchAsync(PoolConfig config, uint topMinersRange, CancellationToken ct)
+    {
+        // Get pool instance
+        pools.TryGetValue(config.Id, out var pool);
+        var from = clock.Now.AddHours(-topMinersRange);
+
+        using var con = await cf.OpenConnectionAsync();
+
+        // Query 1: Get pool stats (1 round-trip)
+        var statsEntity = await con.QuerySingleOrDefaultAsync<Persistence.Postgres.Entities.PoolStats>(
+            new CommandDefinition(
+                "SELECT * FROM poolstats WHERE poolid = @poolId ORDER BY created DESC LIMIT 1",
+                new { poolId = config.Id },
+                cancellationToken: ct));
+        var stats = statsEntity != null ? mapper.Map<Persistence.Model.PoolStats>(statsEntity) : null;
+
+        // Query 2: Combined query for block/payment stats - 6 values in 1 round-trip instead of 6
+        const string combinedSql = @"
+            SELECT 
+                (SELECT COALESCE(SUM(amount), 0) FROM payments WHERE poolid = @poolId) as total_paid,
+                (SELECT COUNT(*) FROM blocks WHERE poolid = @poolId) as total_blocks,
+                (SELECT COUNT(*) FROM blocks WHERE poolid = @poolId AND status = 'confirmed') as confirmed_blocks,
+                (SELECT COUNT(*) FROM blocks WHERE poolid = @poolId AND status = 'pending') as pending_blocks,
+                (SELECT COALESCE(reward, 0) FROM blocks WHERE poolid = @poolId AND status = 'confirmed' ORDER BY created DESC LIMIT 1) as block_reward,
+                (SELECT created FROM blocks WHERE poolid = @poolId ORDER BY created DESC LIMIT 1) as last_block_time
+        ";
+        
+        var batchResult = await con.QuerySingleAsync<dynamic>(
+            new CommandDefinition(combinedSql, new { poolId = config.Id }, cancellationToken: ct));
+        
+        var totalPaid = (decimal)(batchResult.total_paid ?? 0m);
+        var totalBlocks = (uint)Convert.ToInt64(batchResult.total_blocks ?? 0);
+        var confirmedBlocks = (uint)Convert.ToInt64(batchResult.confirmed_blocks ?? 0);
+        var pendingBlocks = (uint)Convert.ToInt64(batchResult.pending_blocks ?? 0);
+        var blockReward = (decimal)(batchResult.block_reward ?? 0m);
+        DateTime? lastBlockTime = batchResult.last_block_time;
+
+        // Map to result
+        var result = config.ToPoolInfo(mapper, stats, pool);
+        result.TotalPaid = totalPaid;
+        result.TotalBlocks = totalBlocks;
+        result.TotalConfirmedBlocks = confirmedBlocks;
+        result.TotalPendingBlocks = pendingBlocks;
+        result.BlockReward = blockReward;
+        result.LastPoolBlockTime = lastBlockTime;
+
+        // Query 3: Top miners (already optimized with CTE, 1 round-trip)
+        var minersByHashrate = await statsRepo.PagePoolMinersByHashrateAsync(con, config.Id, from, 0, 15, ct);
+        result.TopMiners = minersByHashrate.Select(mapper.Map<MinerPerformanceStats>).ToArray();
+
+        // Query 4: Pool effort - only if we have a last block time (conditional, 0-1 round-trip)
+        if(lastBlockTime.HasValue && pool != null)
+        {
+            var poolEffort = await shareRepo.GetEffortBetweenCreatedAsync(con, config.Id, pool.ShareMultiplier, lastBlockTime.Value, clock.Now, ct);
+            if(poolEffort.HasValue)
+                result.PoolEffort = poolEffort.Value;
+        }
+
+        return result;
     }
 
     [HttpGet("/api/help")]
