@@ -2405,6 +2405,36 @@
     "explorerTxLink": "https://explorer.hootchain.org/tx/{0}",
     "explorerAccountLink": "https://explorer.hootchain.org/address/{0}"
   },
+        "hypercoin": {
+    "name": "Hypercoin",
+    "canonicalName": "Hypercoin",
+    "symbol": "HRC",
+    "family": "bitcoin",
+    "website": "https://hypercoin.network/",
+    "market": "https://coinmarketcap.com/currencies/auroracoin/",
+    "twitter": "https://x.com/Hypercoin_HRC",
+    "telegram": "",
+    "discord": "https://discord.gg/q8W5rD6kcF",
+    "github": "https://github.com/Hypercoin-PRJ/hypercoin",
+    "coinbaseHasher": {
+      "hash": "sha256d"
+    },
+    "headerHasher": {
+      "hash": "sha256d"
+    },
+    "blockHasher": {
+      "hash": "reverse",
+      "args": [
+        {
+          "hash": "sha256d"
+        }
+      ]
+    },
+    "explorerBlockLink": "https://explorer.hypercoin.network/block/$height$",
+    "explorerTxLink": "https://explorer.hypercoin.network/tx/{0}",
+    "explorerAccountLink": "https://explorer.hypercoin.network/address/{0}"
+  },
+
   "indexchain": {
     "name": "IndexChain",
     "symbol": "IDX",
