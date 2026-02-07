@@ -2405,36 +2405,7 @@
     "explorerTxLink": "https://explorer.hootchain.org/tx/{0}",
     "explorerAccountLink": "https://explorer.hootchain.org/address/{0}"
   },
-    "hypercoin": {
-    "name": "Hypercoin",
-    "canonicalName": "Hypercoin",
-    "symbol": "HRC",
-    "family": "bitcoin",
-    "website": "https://hypercoin.network/",
-    "market": "https://coinmarketcap.com/currencies/auroracoin/",
-    "twitter": "https://x.com/Hypercoin_HRC",
-    "telegram": "",
-    "discord": "https://discord.gg/q8W5rD6kcF",
-    "github": "https://github.com/Hypercoin-PRJ/hypercoin",
-    "coinbaseHasher": {
-      "hash": "sha256d"
-    },
-    "headerHasher": {
-      "hash": "sha256d"
-    },
-    "blockHasher": {
-      "hash": "reverse",
-      "args": [
-        {
-          "hash": "sha256d"
-        }
-      ]
-    },
-    "explorerBlockLink": "https://explorer.hypercoin.network/block/$height$",
-    "explorerTxLink": "https://explorer.hypercoin.network/tx/{0}",
-    "explorerAccountLink": "https://explorer.hypercoin.network/address/{0}"
-  },
-    "indexchain": {
+  "indexchain": {
     "name": "IndexChain",
     "symbol": "IDX",
     "family": "bitcoin",
@@ -3483,9 +3454,10 @@
         }
       ]
     },
-    "explorerBlockLink": "https://explorer.palladium-coin.com/block/$hash$",
-    "explorerTxLink": "https://explorer.palladium-coin.com/tx/{0}",
-    "explorerAccountLink": "https://explorer.palladium-coin.com/address/{0}"
+    "blockTemplateRpcExtraParams": ["sha256d"],
+    "explorerBlockLink": "https://chainz.cryptoid.info/aur/block.dws?$height$.htm",
+    "explorerTxLink": "https://chainz.cryptoid.info/aur/tx.dws?{0}.htm",
+    "explorerAccountLink": "https://chainz.cryptoid.info/aur/address.dws?{0}.htm"
   },
   "peercoin": {
     "name": "Peercoin",
@@ -6910,12 +6882,11 @@
     "canonicalName": "Callisto-Network",
     "symbol": "CLO",
     "family": "ethereum",
-    "website": "https://callisto.network/",
-    "market": "https://coinmarketcap.com/currencies/callisto-network",
-    "twitter": "https://twitter.com/CallistoSupport",
+    "website": "",
+    "market": "",
+    "twitter": "",
     "telegram": "",
-    "discord": "https://discordapp.com/invite/t6uRWzC",
-    "github": "https://github.com/EthereumCommonwealth/go-callisto",
+    "discord": "",
     "explorerBlockLinks": {
       "block": "https://explorer.callisto.network/blocks/$height$",
       "uncle": "https://explorer.callisto.network/blocks/$height$"
