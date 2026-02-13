@@ -6953,6 +6953,7 @@
     "twitter": "https://twitter.com/eth_classic",
     "telegram": "",
     "discord": "https://ethereumclassic.org/discord",
+    "github": "https://github.com/etclabscore/core-geth",
     "explorerBlockLinks": {
       "block": "https://blockscout.com/etc/mainnet/block/$height$",
       "uncle": "https://blockscout.com/etc/mainnet/block/$height$"
@@ -6971,6 +6972,7 @@
     "twitter": "https://twitter.com/EthereumPoW",
     "telegram": "https://t.me/ethereumpow_official",
     "discord": "https://discord.gg/apcxzJdZaU",
+    "github": "https://github.com/ethereumpow/go-ethereum",
     "explorerBlockLinks": {
       "block": "https://www.oklink.com/en/ethw/block/$height$",
       "uncle": "https://www.oklink.com/en/ethw/uncle/$height$"
