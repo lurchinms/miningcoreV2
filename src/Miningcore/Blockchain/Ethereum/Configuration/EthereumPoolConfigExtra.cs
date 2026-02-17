@@ -22,7 +22,7 @@ public class EthereumPoolConfigExtra
     /// Based on that critical fact, mining pool should be cautious of the risks of using a such deprecated and broken stratum protocol. Use it at your own risks.
     /// "Ethash Stratum V1" protocol is disabled by default
     /// </summary>
-    public bool EnableEthashStratumV1 { get; set; } = true;
+    public bool EnableEthashStratumV1 { get; set; } = false;
 
     /// <summary>
     /// getWork stream published via ZMQ
