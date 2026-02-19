@@ -53,8 +53,8 @@
         <PackageReference Include="Newtonsoft.Json.Schema" Version="4.0.1" />
         <PackageReference Include="Npgsql" Version="9.0.3" />
         <PackageReference Include="NSwag.AspNetCore" Version="14.3.0" />
-        <PackageReference Include="NSwag.CodeGeneration.CSharp" Version="14.6.3" />
-        <PackageReference Include="NSwag.MSBuild" Version="14.6.3">
+        <PackageReference Include="NSwag.CodeGeneration.CSharp" Version="14.3.0" />
+        <PackageReference Include="NSwag.MSBuild" Version="14.3.0">
             <PrivateAssets>all</PrivateAssets>
             <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
         </PackageReference>
