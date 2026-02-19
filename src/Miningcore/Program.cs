@@ -640,21 +640,8 @@ public class Program : BackgroundService
  ██║╚██╔╝██║██║██║╚██╗██║██║██║╚██╗██║██║   ██║██║     ██║   ██║██╔══██╗██╔══╝
  ██║ ╚═╝ ██║██║██║ ╚████║██║██║ ╚████║╚██████╔╝╚██████╗╚██████╔╝██║  ██║███████╗
 ");
-        Console.WriteLine(" https://github.com/blackmennewstyle/miningcore\n");
+        Console.WriteLine(" https://github.com/lurchinms/miningcoreV2\n");
         Console.WriteLine(" Donate to one of these addresses to support the project:\n");
-        Console.WriteLine(" ETH  - 0xbC059e88A4dD11c2E882Fc6B83F8Ec12E4CCCFad");
-        Console.WriteLine(" BTC  - 16xvkGfG9nrJSKKo5nGWphP8w4hr2ZzVuw");
-        Console.WriteLine(" LTC  - LLs76baYT7iMqQhizxtBC96Cy48iX3Eh1p");
-        Console.WriteLine(" DOGE - DFuvDSFh4N3SiXGDnye2Vbc8kqvMHbyQE1");
-        Console.WriteLine(" KAS  - kaspa:qpmf0wyu7c5z4l82ax9cfc5ughwk2f9lgu8uckkqrrpjqkxuk7yrga5nntvgn");
-        Console.WriteLine(" CCX  - ccx7S4B3gBeH1SGWCfqZp3NM7Vavg7H3S8ovJn8fU4bwC4vU7ChWfHtbNzifhrpbJ74bMDxj4KZFTcznTfsucCEg1Kgv7zbNgs");
-        Console.WriteLine(" FIRO - a5AsoTSkfPHQ3SUmR6binG1XW7oQQoFNU1");
-        Console.WriteLine(" ERGO - 9gYyuZzaSw3TiCtUkSRuS3XVDUv41EFs3dtNCFGqiEwHqpb7gkF");
-        Console.WriteLine(" WART - 7795fc0fe93e7e4e232a212f00bdc8885c580a5666d39a0d");
-        Console.WriteLine(" XMR  - 483zaHtMRfM7rw1dXgebhWaRR8QLgAF6w4BomAV319FVVHfdbYTLVuBRc4pQgRAnRpfy6CXvvwngK4Lo3mRKE29RRx3Jb5c");
-        Console.WriteLine(" XEL  - xel:ajnsfv065qusndt0hfsngecrnf5690drmqmc0uq0etlx8zjlcyzqq2slgvt");
-        Console.WriteLine(" CTXC - 0xbb60200d5151a4a0f9a75014e04cf61a0a9f0daf");
-        Console.WriteLine(" ZANO - ZxDKT1aqiEXPA5cDADtYEfMR1oXsRd68bby4nzUvVmnjHzzrfvjwhNdQ9yiWNeGutzg9LZdwsbP2FGB1gNpZXiYY1fCfpw33c");
         Console.WriteLine();
     }
 
