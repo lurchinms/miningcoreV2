@@ -65,6 +65,7 @@ using LogLevel = Microsoft.Extensions.Logging.LogLevel;
 using static Miningcore.Util.ActionUtils;
 using Miningcore.CoinMarketCap;
 using System.Net.Http.Headers;
+using Microsoft.Extensions.Logging.Abstractions;
 
 // ReSharper disable AssignNullToNotNullAttribute
 // ReSharper disable PossibleNullReferenceException
@@ -178,10 +179,7 @@ public class Program : BackgroundService
                         // MVC
                         services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 
-                        services.AddMvc(options =>
-                        {
-                            options.EnableEndpointRouting = false;
-                        })
+                        services.AddControllers()
                         .AddControllersAsServices()
                         .AddJsonOptions(options =>
                         {
@@ -245,7 +243,11 @@ public class Program : BackgroundService
 
                         app.UseMiddleware<ApiRequestMetricsMiddleware>();
 
-                        app.UseMvc();
+                        app.UseRouting();
+                        app.UseEndpoints(endpoints =>
+                        {
+                            endpoints.MapControllers();
+                        });
                     });
 
                     logger.Info(() => $"Prometheus Metrics API listening on http{(apiTlsEnable ? "s" : "")}://{address}:{port}/metrics");
@@ -360,7 +362,9 @@ public class Program : BackgroundService
         builder.RegisterInstance(gcStats);
 
         // AutoMapper
-        var amConf = new MapperConfiguration(cfg => { cfg.AddProfile(new AutoMapperProfile()); });
+        var mapperExpr = new MapperConfigurationExpression();
+        mapperExpr.AddProfile<AutoMapperProfile>();
+        var amConf = new MapperConfiguration(mapperExpr, NullLoggerFactory.Instance);
         builder.Register((ctx, parms) => amConf.CreateMapper());
 
         ConfigurePersistence(builder);
@@ -684,7 +688,6 @@ public class Program : BackgroundService
                 var target = new FileTarget("file")
                 {
                     FileName = GetLogPath(config, config.ApiLogFile),
-                    FileNameKind = FilePathKind.Unknown,
                     Layout = layout
                 };
 
@@ -746,7 +749,6 @@ public class Program : BackgroundService
                 var target = new FileTarget("file")
                 {
                     FileName = GetLogPath(config, config.LogFile),
-                    FileNameKind = FilePathKind.Unknown,
                     Layout = layout
                 };
 
@@ -761,7 +763,6 @@ public class Program : BackgroundService
                     var target = new FileTarget(poolConfig.Id)
                     {
                         FileName = GetLogPath(config, poolConfig.Id + ".log"),
-                        FileNameKind = FilePathKind.Unknown,
                         Layout = layout
                     };
 
