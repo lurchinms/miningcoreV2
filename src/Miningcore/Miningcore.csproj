@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
     <PropertyGroup>
         <OutputType>Exe</OutputType>
-        <TargetFramework>net6.0</TargetFramework>
+        <TargetFramework>net9.0</TargetFramework>
         <AssemblyName>Miningcore</AssemblyName>
         <RootNamespace>Miningcore</RootNamespace>
         <ServerGarbageCollection>true</ServerGarbageCollection>
@@ -42,52 +42,56 @@
 
     <ItemGroup>
         <PackageReference Include="AspNetCoreRateLimit" Version="5.0.0" />
-        <PackageReference Include="Autofac" Version="8.1.0" />
+        <PackageReference Include="Autofac" Version="9.0.0" />
         <PackageReference Include="Autofac.Extensions.DependencyInjection" Version="10.0.0" />
         <PackageReference Include="CircularBuffer" Version="1.4.0" />
-        <PackageReference Include="GitVersion.MsBuild" Version="5.12.0">
+        <PackageReference Include="GitVersion.MsBuild" Version="6.5.1">
           <PrivateAssets>all</PrivateAssets>
           <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
         </PackageReference>
-        <PackageReference Include="Microsoft.IO.RecyclableMemoryStream" Version="3.0.0" />
+        <PackageReference Include="Microsoft.IO.RecyclableMemoryStream" Version="3.0.1" />
         <PackageReference Include="Newtonsoft.Json.Schema" Version="4.0.1" />
-        <PackageReference Include="Npgsql" Version="8.0.5" />
-        <PackageReference Include="NSwag.AspNetCore" Version="14.0.2" />
-        <PackageReference Include="NSwag.CodeGeneration.CSharp" Version="14.0.2" />
-        <PackageReference Include="NSwag.MSBuild" Version="14.0.2">
+        <PackageReference Include="Npgsql" Version="10.0.1" />
+        <PackageReference Include="NSwag.AspNetCore" Version="14.6.3" />
+        <PackageReference Include="NSwag.CodeGeneration.CSharp" Version="14.6.3" />
+        <PackageReference Include="NSwag.MSBuild" Version="14.6.3">
             <PrivateAssets>all</PrivateAssets>
             <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
         </PackageReference>
-        <PackageReference Include="NLog.Extensions.Hosting" Version="5.3.8" />
-        <PackageReference Include="AutoMapper" Version="12.0.1" />
-        <PackageReference Include="Dapper" Version="2.1.35" />
-        <PackageReference Include="FluentValidation" Version="11.10.0" />
-        <PackageReference Include="FluentValidation.AspNetCore" Version="11.3.0" />
-        <PackageReference Include="FluentValidation.DependencyInjectionExtensions" Version="11.10.0" />
-        <PackageReference Include="JetBrains.Annotations" Version="2024.3.0" />
-        <PackageReference Include="MailKit" Version="3.5.0" />
-        <PackageReference Include="McMaster.Extensions.CommandLineUtils" Version="4.0.2" />
-        <PackageReference Include="Microsoft.Extensions.Caching.Memory" Version="8.0.1" />
-        <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="8.0.0" />
-        <PackageReference Include="Microsoft.Extensions.Options.ConfigurationExtensions" Version="8.0.0" />
-        <PackageReference Include="NBitcoin" Version="7.0.42" />
-        <PackageReference Include="NBitcoin.Altcoins" Version="3.0.28" />
+        <PackageReference Include="NLog.Extensions.Hosting" Version="6.1.0" />
+        <PackageReference Include="AutoMapper" Version="16.0.0" />
+        <PackageReference Include="Dapper" Version="2.1.66" />
+        <PackageReference Include="FluentValidation" Version="12.1.1" />
+        <PackageReference Include="FluentValidation.AspNetCore" Version="11.3.1" />
+        <PackageReference Include="FluentValidation.DependencyInjectionExtensions" Version="12.1.1" />
+        <PackageReference Include="JetBrains.Annotations" Version="2025.2.4" />
+        <PackageReference Include="MailKit" Version="4.14.1" />
+        <PackageReference Include="McMaster.Extensions.CommandLineUtils" Version="4.1.1" />
+        <PackageReference Include="Microsoft.Extensions.Caching.Memory" Version="9.0.8" />
+        <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="9.0.0" />
+        <PackageReference Include="Microsoft.Extensions.Options.ConfigurationExtensions" Version="9.0.0" />
+        <PackageReference Include="NBitcoin" Version="9.0.4" />
+        <PackageReference Include="NBitcoin.Altcoins" Version="5.0.1" />
         <PackageReference Include="NBitcoin.Zcash" Version="3.0.0" />
-        <PackageReference Include="NBitcoin.Secp256k1" Version="3.1.6" />
-        <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
-        <PackageReference Include="NLog" Version="5.3.4" />
-        <PackageReference Include="NLog.Extensions.Logging" Version="5.3.14" />
-        <PackageReference Include="Polly" Version="8.3.1" />
-        <PackageReference Include="Portable.BouncyCastle" Version="1.9.0" />
-        <PackageReference Include="prometheus-net.AspNetCore" Version="8.1.0" />
-        <PackageReference Include="prometheus-net" Version="8.2.0" />
-        <PackageReference Include="protobuf-net" Version="3.2.30" />
-        <PackageReference Include="System.Diagnostics.Process" Version="4.3.0" />
-        <PackageReference Include="System.Reactive" Version="6.0.0" />
-        <PackageReference Include="Grpc.AspNetCore" Version="2.57.0" />
-        <PackageReference Include="Google.Protobuf" Version="3.26.1" />
-        <PackageReference Include="Grpc.Net.Client" Version="2.62.0" />
-        <PackageReference Include="Grpc.Tools" Version="2.62.0">
+        <PackageReference Include="BouncyCastle.Cryptography" Version="2.6.1" />
+        <!-- Exclude Portable.BouncyCastle to prevent conflict with BouncyCastle.Cryptography -->
+        <PackageReference Include="Portable.BouncyCastle" Version="1.8.2">
+            <ExcludeAssets>all</ExcludeAssets>
+            <PrivateAssets>all</PrivateAssets>
+        </PackageReference>
+        <PackageReference Include="NBitcoin.Secp256k1" Version="3.2.0" />
+        <PackageReference Include="Newtonsoft.Json" Version="13.0.4" />
+        <PackageReference Include="NLog" Version="6.0.7" />
+        <PackageReference Include="NLog.Extensions.Logging" Version="6.1.0" />
+        <PackageReference Include="Polly" Version="8.6.5" />
+        <PackageReference Include="prometheus-net.AspNetCore" Version="8.2.1" />
+        <PackageReference Include="prometheus-net" Version="8.2.1" />
+        <PackageReference Include="protobuf-net" Version="3.2.56" />
+        <PackageReference Include="System.Reactive" Version="6.1.0" />
+        <PackageReference Include="Grpc.AspNetCore" Version="2.76.0" />
+        <PackageReference Include="Google.Protobuf" Version="3.33.4" />
+        <PackageReference Include="Grpc.Net.Client" Version="2.76.0" />
+        <PackageReference Include="Grpc.Tools" Version="2.76.0">
             <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
             <PrivateAssets>all</PrivateAssets>
         </PackageReference>
