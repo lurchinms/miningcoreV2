@@ -379,6 +379,35 @@
     "explorerTxLink": "https://chainz.cryptoid.info/aur/tx.dws?{0}.htm",
     "explorerAccountLink": "https://chainz.cryptoid.info/aur/address.dws?{0}.htm"
   },
+    "aurum-crypto-gold": {
+    "name": "Aurum Crypto Gold",
+    "canonicalName": "Aurum Crypto Gold",
+    "symbol": "ACG",
+    "family": "bitcoin",
+    "website": "https://aurumcrypto.gold/",
+    "market": "",
+    "twitter": "https://twitter.com/aurumcryptogold",
+    "telegram": "",
+    "discord": "https://discord.com/invite/FdbSbNb2HH",
+    "github": "https://github.com/SariKuHu/Aurum",
+    "coinbaseHasher": {
+      "hash": "sha256d"
+    },
+    "headerHasher": {
+      "hash": "sha256d"
+    },
+    "blockHasher": {
+      "hash": "reverse",
+      "args": [
+        {
+          "hash": "sha256d"
+        }
+      ]
+    },
+    "explorerBlockLink": "https://blocks.aurumcrypto.gold/block/$height$",
+    "explorerTxLink": "https://blocks.aurumcrypto.gold/tx/{0}",
+    "explorerAccountLink": "https://blocks.aurumcrypto.gold/address/{0}"
+  },
   "australia-cash": {
     "name": "Australia Cash",
     "canonicalName": "Australia-Cash",
@@ -2430,7 +2459,7 @@
         }
       ]
     },
-    "explorerBlockLink": "https://explorer.hypercoin.network/block/$height$",
+    "explorerBlockLink": "https://explorer.hypercoin.network/block-height/$height$",
     "explorerTxLink": "https://explorer.hypercoin.network/tx/{0}",
     "explorerAccountLink": "https://explorer.hypercoin.network/address/{0}"
   },
@@ -6952,6 +6981,7 @@
     "twitter": "https://twitter.com/eth_classic",
     "telegram": "",
     "discord": "https://ethereumclassic.org/discord",
+    "github": "https://github.com/etclabscore/core-geth",
     "explorerBlockLinks": {
       "block": "https://blockscout.com/etc/mainnet/block/$height$",
       "uncle": "https://blockscout.com/etc/mainnet/block/$height$"
@@ -7006,6 +7036,7 @@
     "twitter": "https://twitter.com/octa_space",
     "telegram": "https://t.me/octa_space",
     "discord": "https://discord.gg/octaspace",
+    "github": "https://github.com/octaspace-project/go-octa",
     "explorerBlockLinks": {
       "block": "https://explorer.octa.space/block/$height$",
       "uncle": "https://explorer.octa.space/block/$height$"
@@ -7134,6 +7165,7 @@
     "twitter": "https://twitter.com/KaspaCurrency",
     "telegram": "https://t.me/Kaspaenglish",
     "discord": "https://discord.gg/kS3SK5F36R",
+    "github": "https://github.com/kaspanet/rusty-kaspa",
     "addressBech32Prefix": "kaspa",
     "addressBech32PrefixDevnet": "kaspadev",
     "addressBech32PrefixSimnet": "kaspasim",

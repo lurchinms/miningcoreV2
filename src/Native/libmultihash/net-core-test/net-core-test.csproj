@@ -9,4 +9,16 @@
     <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="AWS.Logger.NLog" Version="5.0.1" />
+    <PackageReference Include="NLog" Version="6.1.0" />
+    <PackageReference Include="NLog.Database" Version="6.0.3" />
+    <PackageReference Include="NLog.Extended" Version="4.7.15" />
+    <PackageReference Include="NLog.Extensions.Logging" Version="6.1.1" />
+    <PackageReference Include="NLog.Schema" Version="6.1.0" />
+    <PackageReference Include="NLog.Targets.ElasticSearch" Version="2.1.8" />
+    <PackageReference Include="NLog.Web" Version="6.1.1" />
+    <PackageReference Include="NLog.Web.AspNetCore" Version="6.1.1" />
+  </ItemGroup>
+
 </Project>
