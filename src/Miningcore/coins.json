@@ -1701,6 +1701,37 @@
     "explorerTxLink": "https://chainz.cryptoid.info/dem/tx.dws?{0}.htm",
     "explorerAccountLink": "https://chainz.cryptoid.info/dem/address.dws?{0}.htm"
   },
+    "e-gulden": {
+    "name": "e-Gulden",
+    "canonicalName": "Digibyte Scypt",
+    "symbol": "EFL",
+    "family": "bitcoin",
+    "website": "https://www.e-gulden.org/",
+    "market": "https://coinmarketcap.com/currencies/e-gulden",
+    "twitter": "https://twitter.com/eguldenfoundati",
+    "telegram": "https://t.me/joinchat/K5PBq1fK2nPX61j3MWuIAQ",
+    "discord": "https://discord.gg/WPFjR8B",
+    "github": "https://github.com/Electronic-Gulden-Foundation/egulden",
+    "coinbaseHasher": {
+      "hash": "sha256d"
+    },
+    "headerHasher": {
+      "hash": "scrypt",
+      "args": [1024, 1]
+    },
+    "blockHasher": {
+      "hash": "reverse",
+      "args": [
+        {
+          "hash": "sha256d"
+        }
+      ]
+    },
+    "shareMultiplier": 65536,
+    "explorerBlockLink": "https://chainz.cryptoid.info/efl/block.dws?$height$.htm",
+    "explorerTxLink": "https://chainz.cryptoid.info/efl/tx.dws?{0}.htm",
+    "explorerAccountLink": "https://chainz.cryptoid.info/efl/address.dws?{0}.htm"
+  },
   "emrals": {
     "name": "Emrals",
     "canonicalName": "Emrals",
@@ -1936,8 +1967,8 @@
       ]
     },
     "explorerBlockLink": "https://explorer.fixedcoin.org/block/$hash$",
-    "explorerTxLink": "https://explorer.fixedcoin.org/tx.dws?{0}.htm",
-    "explorerAccountLink": "https://explorer.fixedcoin.org/address.dws?{0}.htm"
+    "explorerTxLink": "https://explorer.fixedcoin.org/tx/{0}",
+    "explorerAccountLink": "https://explorer.fixedcoin.org/address/{0}"
   },
   "fewbit": {
     "name": "FewBit",
@@ -2459,7 +2490,7 @@
         }
       ]
     },
-    "explorerBlockLink": "https://explorer.hypercoin.network/block/$height$",
+    "explorerBlockLink": "https://explorer.hypercoin.network/block-height/$height$",
     "explorerTxLink": "https://explorer.hypercoin.network/tx/{0}",
     "explorerAccountLink": "https://explorer.hypercoin.network/address/{0}"
   },
