@@ -481,6 +481,8 @@ public class EquihashPool : PoolBase
                     cleanJob = (bool) ((object[]) currentJobParams)[^1];
                     break;
             }
+            if(cleanJob)
+                cleanJob = !cleanJob;
 
             var minerJobParams = CreateWorkerJob(connection, cleanJob);
 
