@@ -226,6 +226,35 @@
     "explorerTxLink": "https://chainz.cryptoid.info/agm/tx.dws?{0}.htm",
     "explorerAccountLink": "https://chainz.cryptoid.info/agm/address.dws?{0}.htm"
   },
+    "aureus": {
+    "name": "Aureus",
+    "canonicalName": "Aureus",
+    "symbol": "AURE",
+    "family": "bitcoin",
+    "website": "https://aureuscoin.site/",
+    "market": "",
+    "twitter": "https://x.com/sipher_apex",
+    "telegram": "https://t.me/AUREUS_AUR",
+    "discord": "https://discord.com/invite/s3ENT6tV",
+    "github": "https://github.com/sipherapex/aureus-core",
+    "coinbaseHasher": {
+      "hash": "sha256d"
+    },
+    "headerHasher": { 
+      "hash": "sha256d"
+    },
+    "blockHasher": {
+      "hash": "reverse",
+      "args": [
+        {
+          "hash": "sha256d"
+        }
+      ]
+    },
+    "explorerBlockLink": "https://explore.aureuscoin.site/block-height/$height$",
+    "explorerTxLink": "https://explore.aureuscoin.site/tx/{0}",
+    "explorerAccountLink": "https://explore.aureuscoin.site/address/{0}"
+  },
   "auroracoin-sha256": {
     "name": "Auroracoin",
     "canonicalName": "Auroracoin",
@@ -3287,6 +3316,35 @@
     "explorerAccountLink": "https://explorer.nexa.org/address/{0}",
     "forcePoolAddressDestinationWithPubKey": true,
     "payoutDecimalPlaces": 2
+  },
+    "nito": {
+    "name": "Nitooin",
+    "canonicalName": "NitoCoin",
+    "symbol": "NITO",
+    "family": "bitcoin",
+    "website": "https://nito.network/",
+    "market": "",
+    "twitter": "https://x.com/sipher_apex",
+    "telegram": "https://t.me/Nito_Network",
+    "discord": "https://discord.com/invite/jEnmECdYaE",
+    "github": "https://github.com/NitoNetwork/Nito-core",
+    "coinbaseHasher": {
+      "hash": "sha256d"
+    },
+    "headerHasher": { 
+      "hash": "sha256d"
+    },
+    "blockHasher": {
+      "hash": "reverse",
+      "args": [
+        {
+          "hash": "sha256d"
+        }
+      ]
+    },
+    "explorerBlockLink": "https://explorer.nito.network/block/$height$",
+    "explorerTxLink": "https://explorer.nito.network/tx/{0}",
+    "explorerAccountLink": "https://explorer.nito.network/address/{0}"
   },
   "note-blockchain": {
     "name": "Note Blockchain",
