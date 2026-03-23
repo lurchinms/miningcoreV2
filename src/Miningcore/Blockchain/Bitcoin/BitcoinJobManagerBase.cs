@@ -343,9 +343,16 @@ public abstract class BitcoinJobManagerBase<TJob> : JobManagerBase<TJob>
     {
         try
         {
-            var results = await rpc.ExecuteBatchAsync(logger, ct,
+            var requests = new List<RpcRequest>
+            {
                 new RpcRequest(BitcoinCommands.GetConnectionCount)
-            );
+            };
+
+            var isEmark = poolConfig.Coin.Equals("emark", StringComparison.OrdinalIgnoreCase);
+            if(isEmark)
+                requests.Add(new RpcRequest(BitcoinCommands.GetNetworkHashPS));
+
+            var results = await rpc.ExecuteBatchAsync(logger, ct, requests.ToArray());
 
             if(results.Any(x => x.Error != null))
             {
@@ -359,6 +366,12 @@ public abstract class BitcoinJobManagerBase<TJob> : JobManagerBase<TJob>
 
             //BlockchainStats.NetworkHashrate = miningInfoResponse.NetworkHashps;
             BlockchainStats.ConnectedPeers = (int) (long) connectionCountResponse!;
+
+            if(isEmark && results.Length > 1 && results[1].Error == null)
+            {
+                // DEM's getnetworkhashps returns a value scaled down by 1,000,000 compared to true H/s
+                BlockchainStats.NetworkHashrate = results[1].Response.Value<double>() * 1000000;
+            }
         }
 
         catch(Exception e)
