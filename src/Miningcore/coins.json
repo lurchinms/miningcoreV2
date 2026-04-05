@@ -3426,6 +3426,35 @@
     "explorerBlockLink": "https://openchains.info/coin/ntbc/block/$height$",
     "explorerTxLink": "https://openchains.info/coin/ntbc/tx/{0}",
     "explorerAccountLink": "https://openchains.info/coin/ntbc/address/{0}"
+  },    
+    "ordexcoin": {
+    "name": "Ordex Coin",
+    "canonicalName": "Ordex Coin",
+    "symbol": "OXC",
+    "family": "bitcoin",
+    "website": "https://ordexcoin.com/",
+    "market": "",
+    "twitter": "https://x.com/ordexnetwork",
+    "telegram": "https://t.me/ordexnetwork",
+    "discord": "https://discord.com/invite/rh7g84KxrR",
+    "github": "https://github.com/OrdexCoin/Ordexcoin-Core",
+    "coinbaseHasher": {
+      "hash": "sha256d"
+    },
+    "headerHasher": {
+      "hash": "sha256d"
+    },
+    "blockHasher": {
+      "hash": "reverse",
+      "args": [
+        {
+          "hash": "sha256d"
+        }
+      ]
+    },
+    "explorerBlockLink": "https://explorer.ordexcoin.com/block/$height$",
+    "explorerTxLink": "https://explorer.ordexcoin.com/tx/{0}",
+    "explorerAccountLink": "https://explorer.ordexcoin.com/address/{0}"
   },
   "opticalbitcoin": {
     "name": "Optical BTC",
