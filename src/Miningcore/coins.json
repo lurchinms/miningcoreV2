@@ -704,35 +704,6 @@
     "explorerTxLink": "https://bchblockexplorer.com/tx/{0}",
     "explorerAccountLink": "https://bchblockexplorer.com/address/{0}"
   },
-    "bitcoin-cash2": {
-    "name": "Bitcoin Cash II",
-    "canonicalName": "Bitcoin-Cash II",
-    "symbol": "BCH2",
-    "family": "bitcoin",
-    "website": "https://bch2.org/",
-    "market": "",
-    "twitter": "https://x.com/BitcoincashII",
-    "github": "https://github.com/BitcoincashII",
-    "telegram": "https://t.me/+NN61UINQ3hQwODlh",
-    "discord": "https://discord.gg/SHZpwquMe5",
-    "coinbaseHasher": {
-      "hash": "sha256d"
-    },
-    "headerHasher": {
-      "hash": "sha256d"
-    },
-    "blockHasher": {
-      "hash": "reverse",
-      "args": [
-        {
-          "hash": "sha256d"
-        }
-      ]
-    },
-    "explorerBlockLink": "https://explorer.bch2.org//height$",
-    "explorerTxLink": "https://explorer.bch2.org/tx/{0}",
-    "explorerAccountLink": "https://explorer.bch2.org/address/{0}"
-  },
   "bitcoin-diamond": {
     "name": "Bitcoin Diamond",
     "canonicalName": "Bitcoin-Diamond",
@@ -1940,6 +1911,7 @@
     "symbol": "FTC",
     "family": "bitcoin",
     "website": "http://feathercoin.com/",
+    "github": "https://github.com/FeatherCoin/Feathercoin",
     "market": "https://www.coingecko.com/en/coins/feathercoin",
     "twitter": "https://twitter.com/Feathercoin",
     "telegram": "",
@@ -3345,6 +3317,48 @@
     "forcePoolAddressDestinationWithPubKey": true,
     "payoutDecimalPlaces": 2
   },
+    "nexia": {
+    "name": "Nexia Coin",
+    "canonicalName": "Nexia Coin",
+    "symbol": "NXE",
+    "family": "bitcoin",
+    "website": "https://nexiacoin.org/",
+    "market": "",
+    "twitter": "https://x.com/CoinNexia",
+    "telegram": "https://t.me/+h19OT1zDOAwwNmNh",
+    "discord": "https://discord.gg/44CAfbTJu3",
+    "github": "https://github.com/nexia-coin/nexia-master",
+    "coinbaseHasher": {
+      "hash": "sha256d"
+    },
+    "headerHasher": {
+      "hash": "scrypt",
+      "args": [1024, 1]
+    },
+    "blockHasher": {
+      "hash": "reverse",
+      "args": [
+        {
+          "hash": "sha256d"
+        }
+      ]
+    },
+    "posBlockHasher": {
+      "hash": "reverse",
+      "args": [
+        {
+          "hash": "scrypt",
+          "args": [1024, 1]
+        }
+      ]
+    },
+    "hasMWEB": true,
+    "shareMultiplier": 65536,
+    "explorerBlockLink": "https://explorer.nexiacoin.org/block/$height$",
+    "explorerTxLink": "https://explorer.nexiacoin.org/tx/{0}",
+    "explorerAccountLink": "https://explorer.nexiacoin.org/address/{0}"
+  },
+
     "nito": {
     "name": "Nitooin",
     "canonicalName": "NitoCoin",
@@ -3412,35 +3426,6 @@
     "explorerBlockLink": "https://openchains.info/coin/ntbc/block/$height$",
     "explorerTxLink": "https://openchains.info/coin/ntbc/tx/{0}",
     "explorerAccountLink": "https://openchains.info/coin/ntbc/address/{0}"
-  },
-    "ordexcoin": {
-    "name": "Ordex Coin",
-    "canonicalName": "Ordex Coin",
-    "symbol": "OXC",
-    "family": "bitcoin",
-    "website": "https://ordexcoin.com/",
-    "market": "",
-    "twitter": "https://x.com/ordexnetwork",
-    "telegram": "https://t.me/ordexnetwork",
-    "discord": "https://discord.com/invite/rh7g84KxrR",
-    "github": "https://github.com/OrdexCoin/Ordexcoin-Core",
-    "coinbaseHasher": {
-      "hash": "sha256d"
-    },
-    "headerHasher": {
-      "hash": "sha256d"
-    },
-    "blockHasher": {
-      "hash": "reverse",
-      "args": [
-        {
-          "hash": "sha256d"
-        }
-      ]
-    },
-    "explorerBlockLink": "https://explorer.ordexcoin.com/block/$height$",
-    "explorerTxLink": "https://explorer.ordexcoin.com/tx/{0}",
-    "explorerAccountLink": "https://explorer.ordexcoin.com/address/{0}"
   },
   "opticalbitcoin": {
     "name": "Optical BTC",
@@ -6095,35 +6080,6 @@
     "explorerBlockLink": "https://explorer.xazab.xyz/insight/block/$height$",
     "explorerTxLink": "https://explorer.xazab.xyz/insight/tx/{0}",
     "explorerAccountLink": "https://explorer.xazab.xyz/insight/address/{0}"
-  },
-    "xerocoin": {
-    "name": "Xerocoin",
-    "canonicalName": "Xerocoin",
-    "symbol": "XRO",
-    "family": "bitcoin",
-    "website": "https://xero-coin.com/",
-    "market": "",
-    "twitter": "",
-    "telegram": "https://t.me/+3MrmnAGx-_ViNjVk",
-    "discord": "https://discord.com/invite/qDbBFh92ZT",
-    "github": "https://github.com/XeroCoinX/Xero",
-    "coinbaseHasher": {
-      "hash": "sha256d"
-    },
-    "headerHasher": {
-      "hash": "sha256d"
-    },
-    "blockHasher": {
-      "hash": "reverse",
-      "args": [
-        {
-          "hash": "sha256d"
-        }
-      ]
-    },
-    "explorerBlockLink": "https://xerocoinexplorer.com//block/$height$",
-    "explorerTxLink": "https://xerocoinexplorer.com/tx/{0}",
-    "explorerAccountLink": "https://xerocoinexplorer.com/address/{0}"
   },
   "yerbas": {
     "name": "Yerbas",
