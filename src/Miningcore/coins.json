@@ -6109,6 +6109,35 @@
     "explorerBlockLink": "https://explorer.xazab.xyz/insight/block/$height$",
     "explorerTxLink": "https://explorer.xazab.xyz/insight/tx/{0}",
     "explorerAccountLink": "https://explorer.xazab.xyz/insight/address/{0}"
+  },    
+    "xerocoin": {
+    "name": "Xerocoin",
+    "canonicalName": "Xerocoin",
+    "symbol": "XRO",
+    "family": "bitcoin",
+    "website": "https://xero-coin.com/",
+    "market": "",
+    "twitter": "",
+    "telegram": "https://t.me/+3MrmnAGx-_ViNjVk",
+    "discord": "https://discord.com/invite/qDbBFh92ZT",
+    "github": "https://github.com/XeroCoinX/Xero",
+    "coinbaseHasher": {
+      "hash": "sha256d"
+    },
+    "headerHasher": {
+      "hash": "sha256d"
+    },
+    "blockHasher": {
+      "hash": "reverse",
+      "args": [
+        {
+          "hash": "sha256d"
+        }
+      ]
+    },
+    "explorerBlockLink": "https://xerocoinexplorer.com//block/$height$",
+    "explorerTxLink": "https://xerocoinexplorer.com/tx/{0}",
+    "explorerAccountLink": "https://xerocoinexplorer.com/address/{0}"
   },
   "yerbas": {
     "name": "Yerbas",
