@@ -5426,9 +5426,9 @@
         }
       ]
     },
-    "explorerBlockLink": "https://beta.explorer.titcoin.r4nd0m.us/height/$height$",
-    "explorerTxLink": "https://beta.explorer.titcoin.r4nd0m.us/tx/{0}",
-    "explorerAccountLink": "https://beta.explorer.titcoin.r4nd0m.us/address/{0}"
+    "explorerBlockLink": "https://explorer.titcoin.r4nd0m.us/height/$height$",
+    "explorerTxLink": "https://explorer.titcoin.r4nd0m.us/tx/{0}",
+    "explorerAccountLink": "https://explorer.titcoin.r4nd0m.us/address/{0}"
   },
   "tiltcoin": {
     "name": "TILTCoin",
