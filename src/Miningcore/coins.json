@@ -226,6 +226,35 @@
     "explorerTxLink": "https://chainz.cryptoid.info/agm/tx.dws?{0}.htm",
     "explorerAccountLink": "https://chainz.cryptoid.info/agm/address.dws?{0}.htm"
   },
+    "atom": {
+    "name": "Bitcoin Atom",
+    "canonicalName": "Bitcoin Atom",
+    "symbol": "BCA",
+    "family": "bitcoin",
+    "website": "https://bitcoinatom.io/",
+    "market": "https://coinmarketcap.com/currencies/bitcoin-atom",
+    "twitter": "https://twitter.com/atombitcoin",
+    "telegram": "",
+    "discord": "",
+    "github": "https://github.com/bitcoin-atom/bitcoin-atom",
+    "coinbaseHasher": {
+      "hash": "sha256d"
+    },
+    "headerHasher": {
+      "hash": "sha256d"
+    },
+    "blockHasher": {
+      "hash": "reverse",
+      "args": [
+        {
+          "hash": "sha256d"
+        }
+      ]
+    },
+    "explorerBlockLink": "https://bitcoinatom.net/block/$height$",
+    "explorerTxLink": "https://bitcoinatom.net/tx/{0}",
+    "explorerAccountLink": "https://bitcoinatom.net/address/{0}"
+  },
     "aureus": {
     "name": "Aureus",
     "canonicalName": "Aureus",
@@ -2178,6 +2207,36 @@
     "explorerBlockLink": "https://explorer.foxdcoin.com/block-height/$height$",
     "explorerTxLink": "https://explorer.foxdcoin.com/tx/{0}",
     "explorerAccountLink": "https://explorer.foxdcoin.com/address/{0}"
+  },
+    "fractal": {
+    "name": "Fractal Bitcoin",
+    "canonicalName": "Fractal Bitcoin",
+    "symbol": "FB",
+    "family": "bitcoin",
+    "website": "https://www.fractalbitcoin.io/",
+    "market": "https://coinmarketcap.com/currencies/fractal-bitcoin",
+    "twitter": "https://x.com/fractal_bitcoin",
+    "github": "https://github.com/bitcoin/bitcoin",
+    "telegram": "https://t.me/fractal_bitcoin_official",
+    "discord": "https://discord.com/invite/fractalbitcoin",
+    "coinbaseHasher": {
+      "hash": "sha256d"
+    },
+    "headerHasher": {
+      "hash": "sha256d"
+    },
+    "blockHasher": {
+      "hash": "reverse",
+      "args": [
+        {
+          "hash": "sha256d"
+        }
+      ]
+    },
+    "coinbaseIgnoreAuxFlags": true,
+    "explorerBlockLink": "https://mempool.fractalbitcoin.io/block/$hash$",
+    "explorerTxLink": "https://mempool.fractalbitcoin.io/tx/{0}",
+    "explorerAccountLink": "https://mempool.fractalbitcoin.io/address/{0}"
   },
   "freecash": {
     "name": "Free Cash",
@@ -5185,6 +5244,36 @@
     "explorerBlockLink": "https://scc.ccore.online/block/$height$",
     "explorerTxLink": "https://scc.ccore.online/tx/{0}",
     "explorerAccountLink": "https://scc.ccore.online/address/{0}"
+  },
+    "stronghands": {
+    "name": "Stronghands",
+    "canonicalName": "Stronghands",
+    "symbol": "SHND",
+    "family": "bitcoin",
+    "website": "http://www.stronghands.info/",
+    "market": "",
+    "twitter": "https://twitter.com/SHNDcoin",
+    "telegram": "",
+    "discord": "https://discordapp.com/invite/j7YCR3G",
+    "github": "https://github.com/sugarchain-project/sugarchain",
+    "coinbaseHasher": {
+      "hash": "sha256d"
+    },
+    "headerHasher": {
+      "hash": "sha256d"
+    },
+    "blockHasher": {
+      "hash": "reverse",
+      "args": [
+        {
+          "hash": "sha256d"
+        }
+      ]
+    },
+    "isPseudoPoS": true,
+    "explorerBlockLink": "https://www.coinexplorer.net/SHND/block/$height$",
+    "explorerTxLink": "https://www.coinexplorer.net/SHND/tx/{0}",
+    "explorerAccountLink": "https://www.coinexplorer.net/SHND/address/{0}"
   },
   "sugarchain": {
     "name": "Sugarchain",
