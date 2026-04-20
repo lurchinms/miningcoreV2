@@ -5255,7 +5255,7 @@
     "twitter": "https://twitter.com/SHNDcoin",
     "telegram": "",
     "discord": "https://discordapp.com/invite/j7YCR3G",
-    "github": "https://github.com/sugarchain-project/sugarchain",
+    "github": "https://github.com/stronghands-official/SHND-source",
     "coinbaseHasher": {
       "hash": "sha256d"
     },
@@ -5270,6 +5270,8 @@
         }
       ]
     },
+    "HasBrokenSendMany": true,
+    "coinbaseTxVersion": 2,
     "isPseudoPoS": true,
     "explorerBlockLink": "https://www.coinexplorer.net/SHND/block/$height$",
     "explorerTxLink": "https://www.coinexplorer.net/SHND/tx/{0}",
