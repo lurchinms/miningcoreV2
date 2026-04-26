@@ -704,6 +704,36 @@
     "explorerTxLink": "https://www.blockchain.com/btc/tx/{0}",
     "explorerAccountLink": "https://www.blockchain.com/btc/address/{0}"
   },
+    "bitcoingold": {
+    "name": "Bitcoin Gold",
+    "canonicalName": "Bitcoin Gold",
+    "symbol": "BGTS",
+    "family": "bitcoin",
+    "website": " https://bitcoingold.site/",
+    "market": "https://coinmarketcap.com/currencies/fractal-bitcoin",
+    "twitter": "https://x.com/BTGSGOLD",
+    "github": "https://github.com/BTGSCOINDEV/BTGS/releases/tag/1.1.1 ",
+    "telegram": "https://t.me/fractal_bitcoin_official",
+    "discord": "https://discord.com/invite/fractalbitcoin",
+    "coinbaseHasher": {
+      "hash": "sha256d"
+    },
+    "headerHasher": {
+      "hash": "sha256d"
+    },
+    "blockHasher": {
+      "hash": "reverse",
+      "args": [
+        {
+          "hash": "sha256d"
+        }
+      ]
+    },
+    "coinbaseIgnoreAuxFlags": true,
+    "explorerBlockLink": "https://explore.bitcoingold.site/block-height/$height$",
+    "explorerTxLink": "https://explore.bitcoingold.site/tx/{0}",
+    "explorerAccountLink": "https://explore.bitcoingold.site/address/{0}"
+  },
   "bitcoin-cash": {
     "name": "Bitcoin Cash",
     "canonicalName": "Bitcoin-Cash",
@@ -1790,7 +1820,7 @@
   },
     "e-gulden": {
     "name": "e-Gulden",
-    "canonicalName": "Digibyte Scypt",
+    "canonicalName": "e-Gulden",
     "symbol": "EFL",
     "family": "bitcoin",
     "website": "https://www.e-gulden.org/",
@@ -1814,6 +1844,7 @@
         }
       ]
     },
+    "HasBrokenSendMany": true,
     "shareMultiplier": 65536,
     "explorerBlockLink": "https://chainz.cryptoid.info/efl/block.dws?$height$.htm",
     "explorerTxLink": "https://chainz.cryptoid.info/efl/tx.dws?{0}.htm",
@@ -6298,7 +6329,7 @@
     "twitter": "https://twitter.com/yentencoin",
     "telegram": "https://t.me/yenten",
     "discord": "https://discord.gg/RTbPxu3",
-    "github": "https://github.com/The-Yerbas-Endeavor/yerbas",
+    "github": "https://github.com/yentencoin/yenten",
     "coinbaseHasher": {
       "hash": "sha256d"
     },
