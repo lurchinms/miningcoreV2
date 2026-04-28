@@ -42,7 +42,7 @@
 
     <ItemGroup>
         <PackageReference Include="AspNetCoreRateLimit" Version="5.0.0" />
-        <PackageReference Include="Autofac" Version="9.1.0" />
+        <PackageReference Include="Autofac" Version="9.0.0" />
         <PackageReference Include="Autofac.Extensions.DependencyInjection" Version="10.0.0" />
         <PackageReference Include="AWS.Logger.NLog" Version="5.0.1" />
         <PackageReference Include="CircularBuffer" Version="1.4.0" />
@@ -141,7 +141,7 @@
 
     <!-- Build library binaries from source on Linux -->
     <Target Name="BuildNativeLibsLinux" AfterTargets="AfterBuild" Condition="'$(IsLinux)' == 'true'">
-        <Exec Command="(cd $(ProjectDir) && sh build-libs-linux.sh $(OutDir))" />
+        <Exec Command="(cd $(ProjectDir) &amp;&amp; sh build-libs-linux.sh $(OutDir))" />
     </Target>
 
     <!-- Include library binaries in publish on Windows -->
