@@ -9,7 +9,7 @@ on:
 jobs:
   build:
 
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-24.04
 
     steps:
     - name: Checkout
@@ -17,14 +17,20 @@ jobs:
       with:
         fetch-depth: 0    
     - name: Install Build dependencies
-      run: sudo apt-get install -y cmake cmake ninja-build build-essential libssl-dev pkg-config libboost-all-dev libsodium-dev libzmq5 libgmp-dev
+      run: sudo apt-get update && sudo apt-get install -y git cmake clang ninja-build build-essential libssl-dev pkg-config libboost-all-dev libsodium-dev libzmq5 libgmp-dev libc++-dev zlib1g-dev
     - name: Setup .NET
-      uses: actions/setup-dotnet@v4
+      uses: actions/setup-dotnet@v2
       with:
         dotnet-version: 9.0.x
     - name: Restore dependencies
       run: dotnet restore src
-    - name: Build
-      run: dotnet build --no-restore src
+    - name: Build & Native Libs
+      run: |
+        chmod +x src/Miningcore/build-libs-linux.sh src/Native/check_cpu.sh
+        dotnet build -c Release --no-restore src
+    - name: Copy native libs to test output
+      run: cp src/Miningcore/bin/Release/net9.0/*.so src/Miningcore.Tests/bin/Release/net9.0/ 2>/dev/null || true
     - name: Test
-      run: dotnet test --logger:"console;verbosity=detailed" --no-build --verbosity normal src
+      run: dotnet test -c Release --logger:"console;verbosity=detailed" --no-build --verbosity normal src
+
+
